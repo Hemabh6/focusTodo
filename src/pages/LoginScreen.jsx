@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Smartphone, User } from 'lucide-react';
-import { signInAnonymously, GoogleAuthProvider, signInWithPopup, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { signInAnonymously, GoogleAuthProvider, signInWithCredential, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { auth } from '../config/firebase';
 
 export default function LoginScreen() {
@@ -12,6 +13,12 @@ export default function LoginScreen() {
   const [confirmationResult, setConfirmationResult] = useState(null);
 
   useEffect(() => {
+    // Initialize Google Auth plugin (needed for web; Android uses strings.xml)
+    GoogleAuth.initialize({
+      clientId: '262533805984-n1jqmkqnvrc1f5vn2c43n76jkbbau70d.apps.googleusercontent.com',
+      scopes: ['profile', 'email'],
+      grantOfflineAccess: true,
+    });
     return () => {
       if (window.recaptchaVerifier) {
         window.recaptchaVerifier.clear();
@@ -22,8 +29,14 @@ export default function LoginScreen() {
 
   const handleGoogle = async () => {
     setError(''); setLoading(true);
-    try { await signInWithPopup(auth, new GoogleAuthProvider()); } 
-    catch (err) { setError(err.message); setLoading(false); }
+    try {
+      const googleUser = await GoogleAuth.signIn();
+      const credential = GoogleAuthProvider.credential(googleUser.authentication.idToken);
+      await signInWithCredential(auth, credential);
+    } catch (err) {
+      setError(err.message || 'Google sign-in failed. Please try again.');
+      setLoading(false);
+    }
   };
 
   const handleAnon = async () => {

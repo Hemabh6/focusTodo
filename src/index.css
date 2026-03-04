@@ -11,3 +11,10 @@
   background-color: #cbd5e1;
   border-radius: 10px;
 }
+
+/* This makes the timer ring move smoothly instead of ticking */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: linear;
+  transition-duration: 1000ms;
+}

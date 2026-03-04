@@ -1,5 +1,12 @@
 {
   "appId": "com.aaviskar.focusflow",
   "appName": "FocusFlow",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "serverClientId": "262533805984-n1jqmkqnvrc1f5vn2c43n76jkbbau70d.apps.googleusercontent.com",
+      "forceCodeForRefreshToken": true
+    }
+  }
 }

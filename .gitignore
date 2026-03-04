@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 1. Protect your Release builds
+release/
+
+# 2. Protect your Private Signing Keys (CRITICAL)
+*.jks
+*.keystore
+
+# 3. Protect your Firebase Secrets
+google-services.json

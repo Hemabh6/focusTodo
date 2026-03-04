@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"d:/FocusTodo/focus-flow/capacitor.config.json\":*)",
+      "Bash(npm install @codetrix-studio/capacitor-google-auth)",
+      "Bash(npm install @codetrix-studio/capacitor-google-auth --legacy-peer-deps)",
+      "Bash(npm run build)",
+      "Bash(npx cap sync android)"
+    ]
+  }
+}

@@ -4,4 +4,5 @@
     <string name="title_activity_main">FocusFlow</string>
     <string name="package_name">com.aaviskar.focusflow</string>
     <string name="custom_url_scheme">com.aaviskar.focusflow</string>
+    <string name="server_client_id">262533805984-n1jqmkqnvrc1f5vn2c43n76jkbbau70d.apps.googleusercontent.com</string>
 </resources>
