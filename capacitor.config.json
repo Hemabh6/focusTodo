@@ -2,6 +2,9 @@
   "appId": "com.aaviskar.focusflow",
   "appName": "FocusFlow",
   "webDir": "dist",
+  "android": {
+    "studioPath": "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe"
+  },
   "plugins": {
     "GoogleAuth": {
       "scopes": ["profile", "email"],
